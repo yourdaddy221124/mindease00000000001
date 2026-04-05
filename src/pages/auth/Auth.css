@@ -224,6 +224,102 @@
     margin-top: 0.5rem;
 }
 
+/* ── OAuth Divider ── */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.25rem 0;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--glass-border);
+}
+
+/* ── Google OAuth Button ── */
+.btn-google {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    padding: 0.85rem 1.25rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-google::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(66,133,244,0.08), rgba(234,67,53,0.08));
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+.btn-google:hover:not(:disabled) {
+    border-color: rgba(66, 133, 244, 0.45);
+    box-shadow: 0 0 20px rgba(66, 133, 244, 0.18), 0 4px 16px rgba(0,0,0,0.3);
+    transform: translateY(-1px);
+}
+
+.btn-google:hover:not(:disabled)::before {
+    opacity: 1;
+}
+
+.btn-google:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn-google:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.btn-google svg {
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-google span {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Loading spinner inside buttons ── */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.btn-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.25);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+}
+
 @media (max-width: 480px) {
     .auth-card {
         padding: 1.75rem 1.25rem;
